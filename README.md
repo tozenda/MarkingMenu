@@ -5,22 +5,29 @@
 
 ## Fonctionnalitées : 
 
-Maintient clic gauche -> Ouvre le menu1 -> drag sur élément -> Action de l élément -> Menu suivant ..<br>
+controle + clic gauche -> Ouvre le menu1 -> drag sur élément -> Action de l élément -> Menu suivant ..<br>
 Si relachement du clic ferme le menu <br><br>
-Si plus de 8 éléments, le 8ème élément du menu aura pour action d'afficher les 7 ou 8 prochains éléments<br>
-Ensuite le 1er élément aura pour action d'afficher 7 éléments précéndents<br> 
+Si plus de 8 éléments, lutiliser la molette pour faire défiler<br> 
 
 
 ## Première séance, le TODO :
 
 Implémenter dans Paint.java :<br>
     - coder tool "oval"
-    - méthode setColor(Color color)
-    - méthode setTool(String tool)
-
+    - méthode setOption(String opt, String value)
+	- créer les diff menu (colorMenu et toolMenu) 
+	- si control + clique gauche -> apelle openMenu() du premier menu
+	- Relachement du clique -> maj color ou/et tool
+	
 Créer et implémenter les classes ElementMenu et MenuCirculaire
 
-MenuCirculaire(List<ElementMenu>, String action, MenuElement next)
+MenuCircular(List<ElementMenu>, MenuElement next, String opt)
+	- opt : prend tool ou color dans notre cas
 
-ElementMenu(String value)
+
+MenuElement(String value)
+	- String value (blue par exemple)
+	- méthode openMenu() qui ouvre le menu
+	- methode getValue qui retourne la value
+	
 
