@@ -16,8 +16,8 @@ Implémenter dans Paint.java :<br>
     - coder tool "oval"
     - méthode setOption(String opt, String value)
 	- créer les diff menu (colorMenu et toolMenu) 
-	- si control + clique gauche -> apelle openMenu() du premier menu
-	- Relachement du clique -> maj color ou/et tool
+	- si maintient control -> apelle openMenu() du premier menu
+	- Relachement ctrl -> maj color ou/et tool
 	
 Créer et implémenter les classes ElementMenu et MenuCirculaire
 
