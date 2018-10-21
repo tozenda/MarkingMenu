@@ -1,31 +1,23 @@
 package Paint;
 
-import static java.lang.Math.*;
-
 import java.util.HashMap;
 import java.util.List;
-import java.util.Vector;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
-import java.awt.Point;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.RenderingHints;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Path2D;
-import java.awt.geom.Rectangle2D;
 
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class View extends JFrame{
     private Model m;
-    private Controler c;
-    public View(String title, Model m, Controler c){
+    private Controller c;
+    public View(String title, Model m, Controller c){
         super(title);
         this.m = m;
         this.c = c;
@@ -52,11 +44,21 @@ public class View extends JFrame{
                         g2.draw(shape);
                     }
                 }
-                this.addMouseListener(new MouseAdapter() {
+                this.addMouseMotionListener(new MouseAdapter() {
                     @Override
                     public void mouseDragged(MouseEvent e) {
-                        System.out.println("Hello1");
                         c.draw(e);
+                    }
+                });
+
+                this.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        c.mouseReleased(e);
+                    }
+                    @Override
+                    public void mousePressed(MouseEvent e){
+                        c.mousePressed(e);
                     }
                 });
             }

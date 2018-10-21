@@ -7,7 +7,7 @@ public class Paint {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 Model m = new Model();
-                Controler c = new Controler(m);
+                Controller c = new Controller(m);
                 View paint = new View("Paint",m,c);
             }
         });
