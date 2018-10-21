@@ -15,17 +15,16 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class View extends JFrame{
+
     private Model m;
     private Controller c;
+
     public View(String title, Model m, Controller c){
         super(title);
         this.m = m;
         this.c = c;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(800, 600));
-        add(new JToolBar() {{
-
-        }}, BorderLayout.NORTH);
 
         add(m.panel = new JPanel() {
             public void paintComponent(Graphics g) {
@@ -64,8 +63,49 @@ public class View extends JFrame{
             }
         });
 
+        add(createMenu(), BorderLayout.NORTH);
+
         pack();
         setVisible(true);
+    }
+
+    private JMenuBar createMenu(){
+        JMenuBar menuBar = new JMenuBar();
+        JMenu toolsMenu = new JMenu("Tools");
+        JMenu colorMenu = new JMenu("Colors");
+
+        {
+            JMenuItem blackButton = new JMenuItem("black");
+            blackButton.addActionListener(e -> c.changeColor(Color.BLACK));
+            colorMenu.add(blackButton);
+
+            JMenuItem yellowButton = new JMenuItem("yellow");
+            yellowButton.addActionListener(e -> c.changeColor(Color.YELLOW));
+            colorMenu.add(yellowButton);
+
+            JMenuItem blueButton = new JMenuItem("blue");
+            blueButton.addActionListener(e -> c.changeColor(Color.BLUE));
+            colorMenu.add(blueButton);
+        }
+
+        {
+            JMenuItem penButton = new JMenuItem("Pen");
+            penButton.addActionListener(e -> c.changeTool(Tools.Pen));
+            toolsMenu.add(penButton);
+
+            JMenuItem ovalButton = new JMenuItem("Oval");
+            ovalButton.addActionListener(e -> c.changeTool(Tools.Oval));
+            toolsMenu.add(ovalButton);
+
+            JMenuItem rectangleButton = new JMenuItem("Rectangle");
+            rectangleButton.addActionListener(e -> c.changeTool(Tools.Rectangle));
+            toolsMenu.add(rectangleButton);
+        }
+
+        menuBar.add(toolsMenu);
+        menuBar.add(colorMenu);
+
+        return menuBar;
     }
 
 

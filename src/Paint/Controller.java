@@ -83,4 +83,8 @@ public class Controller {
         this.isDrawing = false;
     }
 
+    public void changeColor(Color c){ m.changeColor(c); }
+
+    public void changeTool(Tools t){ m.changeCurrentTool(t);}
+
 }
