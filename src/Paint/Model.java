@@ -12,6 +12,7 @@ public class Model {
     public JPanel panel;
     private Tools currentTool = Tools.Oval;
     private Color currentColor = Color.BLUE;
+    private boolean isMarkingMenuOpenned = false;
 
     public void newShape(Shape s, Color c){
         List<Shape> shapeForColor = shapes.get(c);
@@ -42,6 +43,11 @@ public class Model {
 
     public void changeColor(Color color){ this.currentColor = color; }
 
+    public boolean isMarkingMenuOpenned(){
+        return this.isMarkingMenuOpenned;
+    }
 
-
+    public void setMarkingMenuOpenned(boolean value){
+        this.isMarkingMenuOpenned = value;
+    }
 }
