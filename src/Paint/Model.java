@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import Menu.*;
 import MenuTemplate.ElementMenu;
+import MenuTemplate.MenuTemplate;
 
 import java.awt.Shape;
 import java.awt.Color;
@@ -32,10 +33,8 @@ public class Model {
         this.shapes.put(c,shapeForColor);
         
         LinkedList<MenuElement> listeElement = new LinkedList<MenuElement>();
-        listeElement.add(new MenuElement("Oval", Tools.Oval));
-        listeElement.add(new MenuElement("Pen", Tools.Pen));
-        listeElement.add(new MenuElement("Rectangle", Tools.Rectangle));
-		MenuModel menuM = new MenuModel(null, listeElement , "tool");
+        MenuTemplate toolTemplate = new MenuTemplate();
+        MenuModel menuM = new MenuModel(toolTemplate, "tool");
 		MenuController menuC = new MenuController(menuM);
 		MenuView menuV = new MenuView(menuM, menuC);
 		menuPannel = menuV;
