@@ -23,6 +23,15 @@ public class Model {
     private Color currentColor = Color.BLUE;
     private boolean isMarkingMenuOpenned = false;
 
+    public Model() {
+    	LinkedList<MenuElement> listeElement = new LinkedList<MenuElement>();
+        MenuTemplate toolTemplate = new MenuTemplate();
+        MenuModel menuM = new MenuModel(toolTemplate, "tool");
+		MenuController menuC = new MenuController(menuM);
+		MenuView menuV = new MenuView(menuM, menuC);
+		menuPannel = menuV;
+    }
+    
     public void newShape(Shape s, Color c){
         
     	List<Shape> shapeForColor = shapes.get(c);
@@ -32,12 +41,7 @@ public class Model {
         shapeForColor.add(s);
         this.shapes.put(c,shapeForColor);
         
-        LinkedList<MenuElement> listeElement = new LinkedList<MenuElement>();
-        MenuTemplate toolTemplate = new MenuTemplate();
-        MenuModel menuM = new MenuModel(toolTemplate, "tool");
-		MenuController menuC = new MenuController(menuM);
-		MenuView menuV = new MenuView(menuM, menuC);
-		menuPannel = menuV;
+        
     }
 
     public HashMap<Color, List<Shape>> getShapes(){
