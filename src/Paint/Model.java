@@ -3,6 +3,7 @@ package Paint;
 import javax.swing.*;
 
 import Menu.*;
+import MenuTemplate.ElementMenu;
 import MenuTemplate.MenuTemplate;
 
 import java.awt.Shape;
@@ -23,8 +24,9 @@ public class Model {
     private boolean isMarkingMenuOpenned = false;
 
     public Model() {
-    	LinkedList<MenuElement> listeElement = new LinkedList<MenuElement>();
+    	LinkedList<ElementMenu> listeElement = new LinkedList<ElementMenu>();
         MenuTemplate toolTemplate = new MenuTemplate();
+        toolTemplate.setMenuElements(listeElement);
         MenuModel menuM = new MenuModel(toolTemplate, "tool");
 		MenuController menuC = new MenuController(menuM);
 		MenuView menuV = new MenuView(menuM, menuC);
