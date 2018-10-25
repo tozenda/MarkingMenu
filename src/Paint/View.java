@@ -74,7 +74,9 @@ public class View extends JFrame{
         }, "panel");
 
         //ajout du MenuPanel
-        contentPane.add(m.menuPannel=new JPanel(), "MenuPanel");
+        contentPane.add(m.menuPannel = new JPanel() {
+
+        }, "MenuPanel");
 
         add(contentPane, BorderLayout.CENTER);
         add(createMenu(), BorderLayout.NORTH);

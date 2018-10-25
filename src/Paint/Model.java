@@ -3,7 +3,6 @@ package Paint;
 import javax.swing.*;
 
 import Menu.*;
-import MenuTemplate.ElementMenu;
 import MenuTemplate.MenuTemplate;
 
 import java.awt.Shape;
@@ -79,8 +78,4 @@ public class Model {
 	public void setCurrentPanel(JPanel currentPanel) {
 		this.currentPanel = currentPanel;
 	}
-
-    public void setMarkingMenuOpenned(boolean value){
-        this.isMarkingMenuOpenned = value;
-    }
 }

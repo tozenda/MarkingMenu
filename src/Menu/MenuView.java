@@ -6,6 +6,8 @@ import MenuTemplate.ElementMenu;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 
@@ -33,6 +35,12 @@ public class MenuView extends JPanel {
     public void paintComponent(Graphics g) {
 		g.setColor(Color.cyan);
 		g.fillOval(300, 150, 250, 250);
+		this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+            }
+        });
 		repaint();
 	}
 }
