@@ -33,8 +33,9 @@ public class View extends JFrame{
 //        contentPane.setBorder(
 //            BorderFactory.createEmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new CardLayout());
-        
-    
+        // On utilise un CardLayout pour permutter les panel
+
+        //ajout de panel de dessin
         contentPane.add(m.panel = new JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -71,9 +72,10 @@ public class View extends JFrame{
                 });
             }
         }, "panel");
-        
+
+        //ajout du MenuPanel
         contentPane.add(m.menuPannel=new JPanel(), "MenuPanel");
-        
+
         add(contentPane, BorderLayout.CENTER);
         add(createMenu(), BorderLayout.NORTH);
         CardLayout cardLayout = (CardLayout) contentPane.getLayout();
@@ -83,6 +85,7 @@ public class View extends JFrame{
         setVisible(true);
     }
 
+    // Création de la barre de menu en haut
     private JMenuBar createMenu(){
         JMenuBar menuBar = new JMenuBar();
         JMenu toolsMenu = new JMenu("Tools");

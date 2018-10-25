@@ -1,4 +1,4 @@
-package Menu;
+package MenuTemplate;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
@@ -12,23 +12,26 @@ import javax.swing.JPanel;
 
 import Paint.Tools;
 
-public class MenuElement extends JLabel {
-	
-	Color color;
-	Tools tool;
-	
-	public MenuElement(String value, Color color) {
+public class ElementMenu extends JLabel {
+
+    private Color color;
+    private Tools tool;
+
+	//construction d un élément couleur
+	public ElementMenu(String value, Color color, String label) {
 		this.setText(value);
 		this.color = color;
+		this.label = label;
 	}
-	
-	public MenuElement(String value, Tools tool) {
+
+	// construction d un element Tool
+	public ElementMenu(String value, Tools tool, String label) {
 		this.setText(value);
 		this.tool = tool;
+		this.label = label;
 	}
 
 	public Tools getTool() {
-		// TODO Auto-generated method stub
 		return tool;
 	}
 	
@@ -37,7 +40,6 @@ public class MenuElement extends JLabel {
 	}
 	
 	public Color getColor() {
-		// TODO Auto-generated method stub
 		return color;
 	}
 	
@@ -45,4 +47,11 @@ public class MenuElement extends JLabel {
 		this.color = color;
 	}
 
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
 }

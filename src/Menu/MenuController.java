@@ -14,7 +14,7 @@ import java.util.List;
 import static java.lang.Math.abs;
 import static java.lang.Math.min;
 
-public class MenuController implements MouseListener {
+public class MenuController{
     
 	MenuModel m;
 
@@ -22,24 +22,7 @@ public class MenuController implements MouseListener {
     	
     }
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+    // calcul de l'élément selectionné
 	public void mousePressed(MouseEvent arg0) {
 		int x = arg0.getX() - 425;
 		int y = arg0.getY() - 275;
@@ -47,12 +30,6 @@ public class MenuController implements MouseListener {
 		int element = (int) Math.round(theta);
 		System.out.println(element);
 		MenuModel.setElementID(element);
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 

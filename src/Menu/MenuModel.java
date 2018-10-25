@@ -1,27 +1,30 @@
 package Menu;
 
+import MenuTemplate.ElementMenu;
+import MenuTemplate.MenuTemplate;
+
 import java.util.LinkedList;
 
 public class MenuModel {
 	
-	private LinkedList<MenuElement> listeElement;
+	private LinkedList<ElementMenu> listeElement;
 	private MenuModel[] next;
+
+	private MenuTemplate menuTemplate;
 	private String opt;
-	private int elementPrint = 0;
+	private int elementPrint = 0; // indice du premier élément a affiché
 	private int nbElement;
 	private static int elementID;
 	
-	public MenuModel(MenuModel[] next, LinkedList<MenuElement> listeElement, String opt) {
-		this.setNext(next);
-		this.setListeElement(listeElement);
-		this.setOpt(opt);
-		this.setNbElement(listeElement.size());
-	
+	public MenuModel(MenuTemplate menuTemplate, String opt) {
+		this.menuTemplate = menuTemplate;
+		this.opt = opt;
 	}
 	
 	public Object getValue() {
 		return(listeElement.get(elementID));
 	}
+
 	public int getNbElement() {
 		return nbElement;
 	}
@@ -38,11 +41,11 @@ public class MenuModel {
 		this.elementPrint = elementPrint;
 	}
 
-	public LinkedList<MenuElement> getListeElement() {
+	public LinkedList<ElementMenu> getListeElement() {
 		return listeElement;
 	}
 
-	public void setListeElement(LinkedList<MenuElement> listeElement) {
+	public void setListeElement(LinkedList<ElementMenu> listeElement) {
 		this.listeElement = listeElement;
 	}
 
@@ -69,4 +72,12 @@ public class MenuModel {
 	public void setOpt(String opt) {
 		this.opt = opt;
 	}
+
+    public MenuTemplate getMenuTemplate() {
+        return menuTemplate;
+    }
+
+    public void setMenuTemplate(MenuTemplate menuTemplate) {
+        this.menuTemplate = menuTemplate;
+    }
 }

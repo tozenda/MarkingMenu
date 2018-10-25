@@ -3,7 +3,7 @@ package Paint;
 import javax.swing.*;
 
 import Menu.*;
-import Menu.MenuElement;
+import MenuTemplate.ElementMenu;
 
 import java.awt.Shape;
 import java.awt.Color;
@@ -13,9 +13,11 @@ import java.util.List;
 
 public class Model {
     private HashMap<Color, List<Shape>> shapes = new HashMap<>();
+
     public JPanel panel;
     public JPanel menuPannel;
     private JPanel currentPanel = panel;
+    // currentPanel est le panel à afficher par la vue. On switch entre le pannel de Paint et le pannel de menu
     private Tools currentTool = Tools.Oval;
     private Color currentColor = Color.BLUE;
     private boolean isMarkingMenuOpenned = false;
@@ -36,7 +38,6 @@ public class Model {
 		MenuModel menuM = new MenuModel(null, listeElement , "tool");
 		MenuController menuC = new MenuController(menuM);
 		MenuView menuV = new MenuView(menuM, menuC);
-		menuV.addMouseListener(menuC);
 		menuPannel = menuV;
     }
 
@@ -63,7 +64,7 @@ public class Model {
     public Color getCurrentColor(){ return this.currentColor; }
 
     public void changeColor(Color color){ this.currentColor = color; }
-    
+
     public boolean isMarkingMenuOpenned(){
         return this.isMarkingMenuOpenned;
     }
