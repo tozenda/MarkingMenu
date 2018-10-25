@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.RenderingHints;
 
@@ -18,6 +20,7 @@ public class View extends JFrame{
 
     private Model m;
     private Controller c;
+	private JPanel contentPane;
 
     public View(String title, Model m, Controller c){
         super(title);
@@ -25,8 +28,14 @@ public class View extends JFrame{
         this.c = c;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(800, 600));
-
-        add(m.panel = new JPanel() {
+        
+        JPanel contentPane = new JPanel();
+//        contentPane.setBorder(
+//            BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        contentPane.setLayout(new CardLayout());
+        
+    
+        contentPane.add(m.panel = new JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D)g;
@@ -61,10 +70,15 @@ public class View extends JFrame{
                     }
                 });
             }
-        });
-
+        }, "panel");
+        
+        contentPane.add(m.menuPannel=new JPanel(), "MenuPanel");
+        
+        add(contentPane, BorderLayout.CENTER);
         add(createMenu(), BorderLayout.NORTH);
-
+        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+        m.setCurrentPanel(m.menuPannel);
+        cardLayout.show(contentPane, m.getCurrentPanel().toString());
         pack();
         setVisible(true);
     }
@@ -107,6 +121,5 @@ public class View extends JFrame{
 
         return menuBar;
     }
-
 
 }

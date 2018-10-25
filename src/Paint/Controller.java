@@ -2,6 +2,8 @@ package Paint;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
@@ -20,16 +22,16 @@ public class Controller {
 
     public Controller(Model m){
         this.m = m;
-    }
-
-    public void updateJPanel(JPanel panel){
-        m.panel = panel;
+        
     }
 
     public void mousePressed(MouseEvent e){
         originalPoint = e.getPoint();
+        if(e.isControlDown()) {
+        	m.setCurrentPannel(m.menuPannel);
+        }
     }
-
+    
     public void draw(MouseEvent e){
         if(m.getCurrentTool() == Tools.Rectangle){
             Rectangle2D.Double rect;
@@ -81,6 +83,9 @@ public class Controller {
 
     public void mouseReleased(MouseEvent e) {
         this.isDrawing = false;
+        if(e.isControlDown()) {
+        	m.setCurrentPannel(m.panel);
+        }
     }
 
     public void changeColor(Color c){ m.changeColor(c); }
