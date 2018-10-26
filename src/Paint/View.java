@@ -16,7 +16,7 @@ import java.awt.RenderingHints;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class View extends JFrame implements KeyListener{
+public class View extends JFrame{
 
     private Model m;
     private Controller c;
@@ -68,6 +68,16 @@ public class View extends JFrame implements KeyListener{
                     @Override
                     public void mousePressed(MouseEvent e){
                         c.mousePressed(e);
+                    }
+                });
+
+                this.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        if(e.isControlDown()){
+                            System.out.println("ok");
+                            c.changeCurrentPanel();
+                        }
                     }
                 });
             }
@@ -128,23 +138,5 @@ public class View extends JFrame implements KeyListener{
 
         return menuBar;
     }
-
-	public void keyPressed(KeyEvent arg0) {
-		System.out.println("touche appuyé");
-		if(arg0.getKeyCode()==KeyEvent.VK_CONTROL) {
-			c.changeCurrentPanel("down");
-			System.out.println("touche control appuyée");
-		}
-	}
-
-	public void keyReleased(KeyEvent arg0) {
-		if(arg0.getKeyCode()==KeyEvent.VK_CONTROL) {
-			c.changeCurrentPanel("up");
-			System.out.println("touche control relaché");
-		}
-	}
-
-	public void keyTyped(KeyEvent arg0) {
-	}
 
 }

@@ -86,12 +86,9 @@ public class Controller {
 
     public void changeTool(Tools t){ m.changeCurrentTool(t);}
     
-    public void changeCurrentPanel(String ctrl) {
-    	if(ctrl=="down") {
-    		m.setCurrentPanel(m.menuPannel);
-    	} else {
-    		m.setCurrentPanel(m.panel);
-    	}
+    public void changeCurrentPanel() {
+        m.setCurrentPanel(m.menuPannel);
+        m.panel.repaint();
     }
 
 }
