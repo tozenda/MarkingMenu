@@ -27,7 +27,7 @@ public class MenuTemplate {
         this.menuElements = menuElements;
     }
     
-    public void setmenuView(MenuView v) {
+    public void setmenuView(MenuView menuView) {
     	this.menuView = menuView;
     }
 

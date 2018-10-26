@@ -47,11 +47,13 @@ public class MenuModel {
 		this.elementID = elementID;
 		if(opt=="tool") {
 			this.paintModel.changeCurrentTool(this.menuTemplate.getMenuElements().get(elementID).getTool());
-
 		} else if (opt=="color") {
 			this.paintModel.changeColor(this.menuTemplate.getMenuElements().get(elementID).getColor());
 		}
-		this.paintModel.menuPannel = menuTemplate.getNextLevelMenuTemplate().getMenuView();
+		if(menuTemplate.getNextLevelMenuTemplate()!=null) {
+			this.paintModel.menuPannel = menuTemplate.getNextLevelMenuTemplate().getMenuView();
+			this.paintModel.menuPannel.repaint();
+		}
 	}
 
 	public String getOpt() {
