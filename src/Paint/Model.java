@@ -8,6 +8,7 @@ import MenuTemplate.MenuTemplate;
 
 import java.awt.Shape;
 import java.awt.Color;
+import java.awt.Container;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,14 +25,34 @@ public class Model {
     private boolean isMarkingMenuOpenned = false;
 
     public Model() {
+    	
     	LinkedList<ElementMenu> listeElement = new LinkedList<ElementMenu>();
     	listeElement.add(new ElementMenu(Tools.Oval, "Oval"));
     	listeElement.add(new ElementMenu(Tools.Rectangle, "Rectangle"));
+    	listeElement.add(new ElementMenu(Tools.Pen, "Pen"));
         MenuTemplate toolTemplate = new MenuTemplate();
         toolTemplate.setMenuElements(listeElement);
         MenuModel menuM = new MenuModel(toolTemplate, "tool", this);
 		MenuController menuC = new MenuController(menuM);
 		MenuView menuV = new MenuView(menuM, menuC);
+		
+		LinkedList<ElementMenu> listeElementColor = new LinkedList<ElementMenu>();
+		listeElementColor.add(new ElementMenu(Color.black, "Black"));
+		listeElementColor.add(new ElementMenu(Color.gray, "Gray"));
+		listeElementColor.add(new ElementMenu(Color.BLUE, "Blue"));
+		listeElementColor.add(new ElementMenu(Color.YELLOW, "Yellow"));
+		listeElementColor.add(new ElementMenu(Color.green, "Green"));
+		listeElementColor.add(new ElementMenu(Color.ORANGE, "Orange"));
+		listeElementColor.add(new ElementMenu(Color.MAGENTA, "Magenta"));
+        MenuTemplate colorTemplate = new MenuTemplate();
+        colorTemplate.setMenuElements(listeElementColor);
+        MenuModel menuColorM = new MenuModel(colorTemplate, "color", this);
+		MenuController menuColorC = new MenuController(menuColorM);
+		MenuView menuColorV = new MenuView(menuColorM, menuColorC);
+		
+		toolTemplate.setNextLevelMenuTemplate(colorTemplate);
+		toolTemplate.setmenuView(menuV);
+		colorTemplate.setmenuView(menuColorV);
 		menuPannel = menuV;
     }
     
