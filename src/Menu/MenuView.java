@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 
@@ -29,6 +31,17 @@ public class MenuView extends JPanel {
             add(element);
             element.setBounds(x, y, 50, 50);
         }
+		this.addMouseListener(new MouseAdapter() {
+            
+            public void mousePressed(MouseEvent e){
+            	int x = e.getX() - 425;
+        		int y = e.getY() - 275;
+        		double theta = ((Math.atan2(y,x)+Math.PI/2) * (180/Math.PI) + 90)/45 -4;
+        		int element = (int) Math.round(theta);
+        		System.out.println(element);
+        		c.updateElementID(element);
+            }
+        });
     }
     
     // dessin du menu
@@ -36,6 +49,5 @@ public class MenuView extends JPanel {
 		g.setColor(Color.cyan);
 		g.fillOval(300, 150, 250, 250);
 		repaint();
-		System.out.println("MenuView : Affichage Menu");
 	}
 }

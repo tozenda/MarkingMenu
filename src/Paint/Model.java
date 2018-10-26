@@ -25,6 +25,8 @@ public class Model {
 
     public Model() {
     	LinkedList<ElementMenu> listeElement = new LinkedList<ElementMenu>();
+    	listeElement.add(new ElementMenu(Tools.Oval, "Oval"));
+    	listeElement.add(new ElementMenu(Tools.Rectangle, "Rectangle"));
         MenuTemplate toolTemplate = new MenuTemplate();
         toolTemplate.setMenuElements(listeElement);
         MenuModel menuM = new MenuModel(toolTemplate, "tool");

@@ -18,15 +18,13 @@ public class ElementMenu extends JLabel {
     private Tools tool;
 
 	//construction d un élément couleur
-	public ElementMenu(String value, Color color, String label) {
-		this.setText(value);
+	public ElementMenu(Color color, String label) {
 		this.color = color;
 		this.setText(label);
 	}
 
 	// construction d un element Tool
-	public ElementMenu(String value, Tools tool, String label) {
-		this.setText(value);
+	public ElementMenu(Tools tool, String label) {
 		this.tool = tool;
 		this.setText(label);
 	}

@@ -22,16 +22,8 @@ public class MenuController{
     	
     }
 
-    // calcul de l'élément selectionné
-	public void mousePressed(MouseEvent arg0) {
-		int x = arg0.getX() - 425;
-		int y = arg0.getY() - 275;
-		double theta = ((Math.atan2(y,x)+Math.PI/2) * (180/Math.PI) + 90)/45 -4;
-		int element = (int) Math.round(theta);
-		System.out.println(element);
-		MenuModel.setElementID(element);
+	public void updateElementID(int elementID) {
+		MenuModel.setElementID(elementID);
 	}
-
-
 }
 
