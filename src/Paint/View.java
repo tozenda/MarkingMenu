@@ -76,7 +76,7 @@ public class View extends JFrame{
         }, "panel");
 
         //ajout du MenuPanel
-        contentPane.add(m.menuPannel, "menuPannel");
+        contentPane.add(m.menuPannel, "menuPanel");
         
         add(contentPane, BorderLayout.CENTER);
         add(createMenu(), BorderLayout.NORTH);
@@ -94,7 +94,7 @@ public class View extends JFrame{
             }
             
             public void keyReleased(KeyEvent e) {
-                if(e.isControlDown()){
+                if(!e.isControlDown()){
                     System.out.println("control released");
                     cardLayout.show(contentPane, "panel");
                 }
