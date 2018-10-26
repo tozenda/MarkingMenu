@@ -2,6 +2,7 @@ package Menu;
 
 import MenuTemplate.ElementMenu;
 import MenuTemplate.MenuTemplate;
+import Paint.Model;
 
 import java.util.LinkedList;
 
@@ -9,16 +10,18 @@ public class MenuModel {
 	
 	private LinkedList<ElementMenu> listeElement;
 	private MenuModel[] next;
+	private Model paintModel;
 
 	private MenuTemplate menuTemplate;
 	private String opt;
 	private int elementPrint = 0; // indice du premier élément a affiché
 	private int nbElement;
-	private static int elementID;
+	private int elementID;
 	
-	public MenuModel(MenuTemplate menuTemplate, String opt) {
+	public MenuModel(MenuTemplate menuTemplate, String opt, Model paintModel) {
 		this.menuTemplate = menuTemplate;
 		this.opt = opt;
+		this.paintModel = paintModel;
 	}
 	
 	public Object getValue() {
@@ -57,12 +60,13 @@ public class MenuModel {
 		this.next = next;
 	}
 
-	public static int getElementID() {
+	public int getElementID() {
 		return elementID;
 	}
 
-	public static void setElementID(int elementID) {
-		MenuModel.elementID = elementID;
+	public void setElementID(int elementID) {
+	    this.elementID = elementID;
+	    this.paintModel.changeCurrentTool(this.menuTemplate.getMenuElements().get(elementID).getTool());
 	}
 
 	public String getOpt() {

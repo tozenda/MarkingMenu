@@ -29,7 +29,7 @@ public class Model {
     	listeElement.add(new ElementMenu(Tools.Rectangle, "Rectangle"));
         MenuTemplate toolTemplate = new MenuTemplate();
         toolTemplate.setMenuElements(listeElement);
-        MenuModel menuM = new MenuModel(toolTemplate, "tool");
+        MenuModel menuM = new MenuModel(toolTemplate, "tool", this);
 		MenuController menuC = new MenuController(menuM);
 		MenuView menuV = new MenuView(menuM, menuC);
 		menuPannel = menuV;
