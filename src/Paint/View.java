@@ -29,14 +29,15 @@ public class View extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(800, 600));
         
-//        JPanel contentPane = new JPanel();
-//        contentPane.setBorder(
-//            BorderFactory.createEmptyBorder(5, 5, 5, 5));
-//        contentPane.setLayout(new CardLayout());
+        JPanel contentPane = new JPanel();
+        contentPane.setBorder(
+            BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        contentPane.setLayout(new CardLayout());
+        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
         // On utilise un CardLayout pour permutter les panel
 
         //ajout de panel de dessin
-        m.panel = new JPanel() {
+        contentPane.add(m.panel = new JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D)g;
@@ -71,32 +72,34 @@ public class View extends JFrame{
                     }
                 });
 
-                this.addKeyListener(new KeyAdapter() {
-                    @Override
-                    public void keyPressed(KeyEvent e) {
-                        if(e.isControlDown()){
-                            System.out.println("ok");
-                            c.changeCurrentPanel();
-                        }
-                    }
-                });
             }
-        };
+        }, "panel");
 
         //ajout du MenuPanel
-//        contentPane.add(m.menuPannel = new JPanel() {
-//
-//        }, "MenuPanel");
-        m.setCurrentPanel(m.panel);
-        add(m.getCurrentPanel(), BorderLayout.CENTER);
-        m.getCurrentPanel().setFocusable(true);
-        m.getCurrentPanel().requestFocusInWindow();
+        contentPane.add(m.menuPannel, "menuPannel");
+        
+        add(contentPane, BorderLayout.CENTER);
         add(createMenu(), BorderLayout.NORTH);
-//        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-//        m.setCurrentPanel(m.menuPannel);
-//        cardLayout.show(contentPane, m.getCurrentPanel().toString());
+        cardLayout.show(contentPane, "panel");
         pack();
         setVisible(true);
+        
+        this.addKeyListener(new KeyAdapter() {
+            
+            public void keyPressed(KeyEvent e) {
+                if(e.isControlDown()){
+                    System.out.println("control pressed");
+                    cardLayout.show(contentPane, "menuPanel");
+                }
+            }
+            
+            public void keyReleased(KeyEvent e) {
+                if(e.isControlDown()){
+                    System.out.println("control released");
+                    cardLayout.show(contentPane, "panel");
+                }
+            }
+        });
     }
 
     // Création de la barre de menu en haut
