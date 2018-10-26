@@ -29,6 +29,7 @@ public class Controller {
         originalPoint = e.getPoint();
         if(e.isControlDown()) {
         	m.setCurrentPannel(m.menuPannel);
+        	System.out.println("affichage panel menu");
         }
     }
     
@@ -85,6 +86,7 @@ public class Controller {
         this.isDrawing = false;
         if(e.isControlDown()) {
         	m.setCurrentPannel(m.panel);
+        	System.out.println("affichage panel dessin");
         }
     }
 

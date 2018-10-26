@@ -29,14 +29,14 @@ public class View extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(800, 600));
         
-        JPanel contentPane = new JPanel();
+//        JPanel contentPane = new JPanel();
 //        contentPane.setBorder(
 //            BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(new CardLayout());
+//        contentPane.setLayout(new CardLayout());
         // On utilise un CardLayout pour permutter les panel
 
         //ajout de panel de dessin
-        contentPane.add(m.panel = new JPanel() {
+        m.panel = new JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D)g;
@@ -71,18 +71,18 @@ public class View extends JFrame{
                     }
                 });
             }
-        }, "panel");
+        };
 
         //ajout du MenuPanel
-        contentPane.add(m.menuPannel = new JPanel() {
-
-        }, "MenuPanel");
-
-        add(contentPane, BorderLayout.CENTER);
+//        contentPane.add(m.menuPannel = new JPanel() {
+//
+//        }, "MenuPanel");
+        m.setCurrentPanel(m.panel);
+        add(m.getCurrentPanel(), BorderLayout.CENTER);
         add(createMenu(), BorderLayout.NORTH);
-        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-        m.setCurrentPanel(m.menuPannel);
-        cardLayout.show(contentPane, m.getCurrentPanel().toString());
+//        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+//        m.setCurrentPanel(m.menuPannel);
+//        cardLayout.show(contentPane, m.getCurrentPanel().toString());
         pack();
         setVisible(true);
     }
