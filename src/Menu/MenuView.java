@@ -35,12 +35,7 @@ public class MenuView extends JPanel {
     public void paintComponent(Graphics g) {
 		g.setColor(Color.cyan);
 		g.fillOval(300, 150, 250, 250);
-		this.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                super.keyPressed(e);
-            }
-        });
 		repaint();
+		System.out.println("MenuView : Affichage Menu");
 	}
 }

@@ -24,13 +24,9 @@ public class Controller {
         this.m = m;
         
     }
-
+    
     public void mousePressed(MouseEvent e){
         originalPoint = e.getPoint();
-        if(e.isControlDown()) {
-        	m.setCurrentPannel(m.menuPannel);
-        	System.out.println("affichage panel menu");
-        }
     }
     
     public void draw(MouseEvent e){
@@ -84,14 +80,18 @@ public class Controller {
 
     public void mouseReleased(MouseEvent e) {
         this.isDrawing = false;
-        if(e.isControlDown()) {
-        	m.setCurrentPannel(m.panel);
-        	System.out.println("affichage panel dessin");
-        }
     }
 
     public void changeColor(Color c){ m.changeColor(c); }
 
     public void changeTool(Tools t){ m.changeCurrentTool(t);}
+    
+    public void changeCurrentPanel(String ctrl) {
+    	if(ctrl=="down") {
+    		m.setCurrentPanel(m.menuPannel);
+    	} else {
+    		m.setCurrentPanel(m.panel);
+    	}
+    }
 
 }

@@ -16,7 +16,7 @@ import java.awt.RenderingHints;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class View extends JFrame{
+public class View extends JFrame implements KeyListener{
 
     private Model m;
     private Controller c;
@@ -79,6 +79,8 @@ public class View extends JFrame{
 //        }, "MenuPanel");
         m.setCurrentPanel(m.panel);
         add(m.getCurrentPanel(), BorderLayout.CENTER);
+        m.getCurrentPanel().setFocusable(true);
+        m.getCurrentPanel().requestFocusInWindow();
         add(createMenu(), BorderLayout.NORTH);
 //        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
 //        m.setCurrentPanel(m.menuPannel);
@@ -126,5 +128,23 @@ public class View extends JFrame{
 
         return menuBar;
     }
+
+	public void keyPressed(KeyEvent arg0) {
+		System.out.println("touche appuyé");
+		if(arg0.getKeyCode()==KeyEvent.VK_CONTROL) {
+			c.changeCurrentPanel("down");
+			System.out.println("touche control appuyée");
+		}
+	}
+
+	public void keyReleased(KeyEvent arg0) {
+		if(arg0.getKeyCode()==KeyEvent.VK_CONTROL) {
+			c.changeCurrentPanel("up");
+			System.out.println("touche control relaché");
+		}
+	}
+
+	public void keyTyped(KeyEvent arg0) {
+	}
 
 }
